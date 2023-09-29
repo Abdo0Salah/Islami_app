@@ -3,14 +3,14 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/sura_details_model.dart';
 
-class Details extends StatefulWidget {
+class SuraDetails extends StatefulWidget {
   static const String routeName = 'Details';
 
   @override
-  State<Details> createState() => _DetailsState();
+  State<SuraDetails> createState() => _DetailsState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsState extends State<SuraDetails> {
   List<String> verses = [];
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
@@ -33,10 +33,13 @@ class _DetailsState extends State<Details> {
           body: Card(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return Text(
-                  verses[index],
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                return Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                  '${verses[index]}(${index+1})',
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
                 );
               },
               itemCount: verses.length,
