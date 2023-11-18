@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/hadeth_model.dart';
-import '../models/sura_details_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../providers/my_provider.dart';
+import '../theme/my_theme.dart';
 class AhadethDetails extends StatefulWidget {
   static const String routeName = 'ahadeth';
   @override
@@ -10,12 +14,14 @@ class AhadethDetails extends StatefulWidget {
 class _DetailsState extends State<AhadethDetails> {
 
   Widget build(BuildContext context) {
+    var proider = Provider.of<MyProvider>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  "assets/images/img.png",
+                  proider.getBackgroundImg( ),
                 ),
                 fit: BoxFit.fill)),
         child: Scaffold(
@@ -31,7 +37,7 @@ class _DetailsState extends State<AhadethDetails> {
                   textDirection: TextDirection.rtl,
                   child: Text(
                     args.body[index],
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(color: MyTheme.blackColor),
                     textAlign: TextAlign.center,
                   ),
                 );

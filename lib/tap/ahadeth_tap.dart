@@ -4,7 +4,8 @@ import '../models/hadeth_model.dart';
 import '../models/sura_details_model.dart';
 import '../screens/ahadeth_details.dart';
 import '../screens/sura_detailes.dart';
-import '../sura_names.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../theme/my_theme.dart';
 
 class AhadethTap extends StatefulWidget {
@@ -28,7 +29,7 @@ class _AhadethTapState extends State<AhadethTap> {
           color: MyTheme.primary,
           thickness: 3,
         ),
-        Text("Hadeth Name", style: Theme.of(context).textTheme.bodyMedium),
+        Text(AppLocalizations.of(context)!.hadeth_name, style: Theme.of(context).textTheme.bodyMedium),
         Divider(
           color: MyTheme.primary,
           thickness: 3,
